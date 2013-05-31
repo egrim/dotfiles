@@ -1,35 +1,60 @@
-
 # Git shortcuts
 
-alias g='git'
-function ga() { git add "${@:-.}"; } # Add all files by default
-alias gp='git push'
-alias gpa='gp --all'
-alias gu='git pull'
-alias gl='git log'
-alias gg='gl --decorate --oneline --graph --date-order --all'
-alias gs='git status'
-alias gst='gs'
-alias gd='git diff'
-alias gdc='gd --cached'
-alias gm='git commit -m'
-alias gma='git commit -am'
+alias g=git
+alias ga='git add'
 alias gb='git branch'
 alias gba='git branch -a'
-function gc() { git checkout "${@:-master}"; } # Checkout master by default
-alias gco='gc'
-alias gcb='gc -b'
+alias gc='git commit -v'
+alias 'gc!'='git commit -v --amend'
+alias gca='git commit -v -a'
+alias 'gca!'='git commit -v -a --amend'
+alias gcl='git config --list'
+alias gcm='git checkout master'
+alias gco='git checkout'
+alias gcount='git shortlog -sn'
+alias gcp='git cherry-pick'
+alias gd='git diff'
+alias gf='git ls-files | grep'
+alias ggpnp='git pull origin $(current_branch) && git push origin $(current_branch)'
+alias ggpull='git pull origin $(current_branch)'
+alias ggpush='git push origin $(current_branch)'
+alias git-svn-dcommit-push='git svn dcommit && git push github master:svntrunk'
+alias gl='git pull'
+alias glg='git log --stat --max-count=5'
+alias glgg='git log --graph --max-count=5'
+alias glgga='git log --graph --decorate --all'
+alias glo='git log --oneline'
+alias glp=_git_log_prettily
+alias gm='git merge'
+alias gp='git push'
+alias gpoat='git push origin --all && git push origin --tags'
 alias gr='git remote'
-alias grv='gr -v'
-#alias gra='git remote add'
-alias grr='git remote rm'
-alias gcl='git clone'
-alias gcd='git rev-parse 2>/dev/null && cd "./$(git rev-parse --show-cdup)"'
+alias grh='git reset HEAD'
+alias grhh='git reset HEAD --hard'
+alias grmv='git remote rename'
+alias grrm='git remote remove'
+alias grset='git remote set-url'
+alias grt='cd $(git rev-parse --show-toplevel || echo ".")'
+alias grup='git remote update'
+alias grv='git remote -v'
+alias gsd='git svn dcommit'
+alias gsr='git svn rebase'
+alias gss='git status -s'
+alias gst='git status'
+alias gup='git pull --rebase'
+alias gwc='git whatchanged -p --abbrev-commit --pretty=medium'
 
 # Run commands in each subdirectory.
 alias gu-all='eachdir git pull'
 alias gp-all='eachdir git push'
 alias gs-all='eachdir git status'
+
+# Pretty log messages
+function _git_log_prettily(){
+  if ! [ -z $1 ]; then
+    git log --pretty=$1
+  fi
+}
 
 # open all changed files (that still actually exist) in the editor
 function ged() {

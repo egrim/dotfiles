@@ -41,4 +41,4 @@ function md() {
 }
 
 # Setup autojump
-AUTOJUMP=`brew --prefix`/etc/autojump.sh && [[ -s $AUTOJUMP ]] && . $AUTOJUMP
+AUTOJUMP=`brew --prefix 2>/dev/null`/etc/autojump.sh && [[ -s $AUTOJUMP ]] && . $AUTOJUMP
