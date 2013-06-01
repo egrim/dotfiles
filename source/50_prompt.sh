@@ -27,6 +27,7 @@ if [[ ! "${prompt_colors[@]}" ]]; then
     "36" # information color
     "37" # bracket color
     "31" # error color
+    "32" # venv color
   )
 
   if [[ "$SSH_TTY" ]]; then
@@ -81,6 +82,13 @@ function prompt_svn() {
   fi
 }
 
+# Virtualenv info.
+function prompt_venv() {
+  if [ $VIRTUAL_ENV ]; then
+      echo "($(basename $VIRTUAL_ENV))"
+  fi
+}
+
 # Maintain a per-execution call stack.
 prompt_stack=()
 trap 'prompt_stack=("${prompt_stack[@]}" "$BASH_COMMAND")' DEBUG
@@ -112,6 +120,8 @@ function prompt_command() {
   PS1="$PS1\n"
   # date: [HH:MM:SS]
   PS1="$PS1$c1[$c0$(date +"%H$c1:$c0%M$c1:$c0%S")$c1]$c9"
+  # virtualenv
+  PS1="$PS1$c3$(prompt_venv)$c9"
   # exit code: 127
   PS1="$PS1$(prompt_exitcode "$exit_code")"
   PS1="$PS1 \$ "
