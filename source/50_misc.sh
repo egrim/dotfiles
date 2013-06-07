@@ -15,7 +15,15 @@ for option in autocd globstar; do
     shopt -s "$option" 2> /dev/null
 done
 
+# Always enable colored 'grep' output
 export GREP_OPTIONS='--color=auto'
+
+# Prefer US English and use UTF-8
+export LANG="en_US"
+export LC_ALL="en_US.UTF-8"
+
+# Highlight section titles in manual pages
+export LESS_TERMCAP_md="$ORANGE"
 
 # Prevent less from clearing the screen while still showing colors.
 export LESS=-XR

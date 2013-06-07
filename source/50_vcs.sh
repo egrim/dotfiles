@@ -45,6 +45,9 @@ alias gst='git status'
 alias gup='git pull --rebase'
 alias gwc='git whatchanged -p --abbrev-commit --pretty=medium'
 
+alias gk='gitk&'
+alias gka='gitk --all&'
+
 # Run commands in each subdirectory.
 alias gu-all='eachdir git pull'
 alias gp-all='eachdir git push'
