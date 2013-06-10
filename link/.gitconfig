@@ -54,4 +54,4 @@
 [url "git@heroku.com:"]
   insteadOf = "heroku:"
 [push]
-	default = matching
+	default = upstream
