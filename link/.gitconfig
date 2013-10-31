@@ -3,7 +3,7 @@
   email = evan@mirgnave.com
 [core]
   autocrlf = input
-  whitespace = fix,space-before-tab,tab-in-indent,trailing-space
+  whitespace = fix,space-before-tab,trailing-space
   excludesfile = ~/.gitignore_global
 [apply]
   whitespace = fix
