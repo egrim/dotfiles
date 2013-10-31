@@ -1,0 +1,79 @@
+# Configs
+config defaultToCurrentScreen true
+config nudgePercentOf screenSize
+config resizePercentOf screenSize
+config secondsBetweenRepeat 0.1
+config checkDefaultsOnLoad true
+config focusCheckWidthMax 3000
+config windowHintsShowIcons true
+config windowHintsIgnoreHiddenWindows false
+config windowHintsDuration 6
+config windowHintsSpread true
+config windowHintsSpreadSearchWidth 180
+config windowHintsSpreadSearchHeight 180
+#config windowHintsOrder persist
+
+# Misc Aliases
+alias showNormalHint hint asdfjkl;qweruiopzxcvm,./
+
+alias full          move screenOriginX;screenOriginY screenSizeX;screenSizeY
+
+alias left          corner top-left resize:screenSizeX/2;screenSizeY
+alias leftless      corner top-left resize:screenSizeX*.40;screenSizeY
+alias leftmore      corner top-left resize:screenSizeX*.60;screenSizeY
+
+alias right          corner top-right resize:screenSizeX/2;screenSizeY
+alias rightless      corner top-right resize:screenSizeX*.40;screenSizeY
+alias rightmore      corner top-right resize:screenSizeX*.60;screenSizeY
+
+alias top          corner top-left resize:screenSizeX;screenSizeY/2
+alias topless      corner top-left resize:screenSizeX;screenSizeY*.4
+alias topmore      corner top-left resize:screenSizeX;screenSizeY*.6
+
+alias bottom          corner bottom-left resize:screenSizeX;screenSizeY/2
+alias bottomless      corner bottom-left resize:screenSizeX;screenSizeY*.4
+alias bottommore      corner bottom-left resize:screenSizeX;screenSizeY*.6
+
+# ======================================
+# The HYPER key
+# See: http://www.tenshu.net/2012/11/using-caps-lock-as-new-modifier-key-in.html
+# ======================================
+
+alias hyper shift;ctrl;alt;cmd
+
+bind r:${hyper} relaunch
+bind g:${hyper} grid 1:4,4
+bind e:${hyper} ${showNormalHint}
+
+# Snap bindings
+bind m:${hyper} ${full}
+bind left:${hyper} chain ${left} | ${leftmore} | ${leftless}
+bind right:${hyper} chain ${right} | ${rightmore} | ${rightless}
+bind up:${hyper} chain ${top} | ${topmore} | ${topless}
+bind down:${hyper} chain ${bottom} | ${bottommore} | ${bottomless}
+
+# Move bindings
+bind w:${hyper} nudge +0 -5%
+bind s:${hyper} nudge +0 +5%
+bind a:${hyper} nudge -5% +0
+bind d:${hyper} nudge +5% +0
+
+# Resize Bindings
+bind [:${hyper} resize -10% -10%
+bind ]:${hyper} resize +10% +10%
+bind i:${hyper} resize +0 -10%
+bind k:${hyper} resize +0 +10%
+bind j:${hyper} resize -10% +0
+bind l:${hyper} resize +10% +0
+
+# Focus Bindings
+bind right:${hyper}    ${right}
+bind left:${hyper}     ${left}
+bind up:${hyper}       ${top}
+bind down:${hyper}     ${bottom}
+
+# App bindings
+bind b:${hyper} focus 'Google Chrome'
+bind x:${hyper} focus 'Xcode'
+bind t:${hyper} focus 'Terminal'
+bind f:${hyper} focus 'Finder'
