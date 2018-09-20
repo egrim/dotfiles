@@ -35,6 +35,7 @@
   untracked = cyan
 [merge]
   log = true
+	tool = diffmerge
 [difftool "latex"]
   cmd = latexdiff  \"$LOCAL\" \"$REMOTE\"
 [rerere]
@@ -55,3 +56,13 @@
   insteadOf = "heroku:"
 [push]
 	default = upstream
+[mergetool "diffmerge"]
+	cmd = diffmerge --merge\n--result=$MERGED $LOCAL $BASE $REMOTE
+	trustExitCode = true
+[diff]
+	tool = diffmerge
+[difftool "diffmerge"]
+	cmd = diffmerge $LOCAL $REMOTE
+[filter "media"]
+	clean = git-media-clean %f
+	smudge = git-media-smudge %f

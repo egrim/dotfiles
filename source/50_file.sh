@@ -40,3 +40,7 @@ function md() {
   mkdir -p "$@" && cd "$@"
 }
 
+# Create a new directory and enter it (clober any existing dir)
+function rmd() {
+  rm -rf "$@" && mkdir -p "$@" && cd "$@"
+}
