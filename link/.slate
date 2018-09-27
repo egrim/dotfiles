@@ -42,7 +42,7 @@ alias bottommore      corner bottom-left resize:screenSizeX;screenSizeY*.6
 alias hyper shift;ctrl;alt;cmd
 
 bind r:${hyper} relaunch
-bind g:${hyper} grid 1:4,4
+bind g:${hyper} grid 0:4,4
 bind e:${hyper} ${showNormalHint}
 
 # Snap bindings

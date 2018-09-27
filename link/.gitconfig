@@ -36,6 +36,7 @@
 [merge]
   log = true
 	tool = diffmerge
+	ff = no
 [difftool "latex"]
   cmd = latexdiff  \"$LOCAL\" \"$REMOTE\"
 [rerere]
@@ -57,12 +58,36 @@
 [push]
 	default = upstream
 [mergetool "diffmerge"]
-	cmd = diffmerge --merge\n--result=$MERGED $LOCAL $BASE $REMOTE
+	cmd = /usr/local/bin/diffmerge --nosplash --merge\n--result=$MERGED $LOCAL $BASE $REMOTE
 	trustExitCode = true
+[mergetool "meld"]
+    # cmd = meld "$LOCAL" "$MERGED" "$REMOTE" --output "$MERGED"
+    cmd = /Applications/Meld.app/Contents/MacOS/Meld --auto-merge "$LOCAL" "$BASE" "$REMOTE" --output="$MERGED"
 [diff]
 	tool = diffmerge
 [difftool "diffmerge"]
-	cmd = diffmerge $LOCAL $REMOTE
+	cmd = /usr/local/bin/diffmerge --nosplash $LOCAL $REMOTE
 [filter "media"]
 	clean = git-media-clean %f
 	smudge = git-media-smudge %f
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
+[pull]
+	ff = only
+[mergetool]
+	keepBackup = false
+[hub]
+	host = git.soma.salesforce.com
+
+# Giving this a try (from: https://gist.github.com/NamPNQ/45ac6ea84dc68b5d3a54)
+[diff]
+    tool = pycharm
+[difftool "pycharm"]
+    cmd = /usr/local/bin/charm diff "$LOCAL" "$REMOTE" && echo "Press enter to continue..." && read
+[merge]
+    tool = pycharm
+    keepBackup = false
+[mergetool "pycharm"]
+    cmd = /usr/local/bin/charm merge "$LOCAL" "$REMOTE" "$BASE" "$MERGED"
