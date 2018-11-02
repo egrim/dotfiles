@@ -11,8 +11,8 @@
 # Read more (and see a screenshot) in the "Prompt" section of
 # https://github.com/cowboy/dotfiles
 
-# Abort if a prompt is already defined.
-[[ "$PROMPT_COMMAND" ]] && return
+# Abort if a prompt is already defined. (etg: had to remove this because of autojump (maybe))
+# [[ "$PROMPT_COMMAND" ]] && return
 
 # ANSI CODES - SEPARATE MULTIPLE VALUES WITH ;
 #

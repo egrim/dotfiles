@@ -19,47 +19,65 @@ brew cask info this-is-somewhat-annoying 2>/dev/null
 casks=(
   # Applications
   a-better-finder-rename
-  alfred
+  #alfred
   android-platform-tools
-  bartender
-  battle-net
-  bettertouchtool
+  android-studio
+  anylist
+  arduino
+  aws-vault
+  #bartender
+  #bettertouchtool
+  calibre
   charles
-  chromium
-  chronosync
-  controllermate
+  #chromium
+  #chronosync
+  #controllermate
+  diffmerge
+  disk-inventory-x
   docker
+  dozer # hide menu bar cruft
   dropbox
-  fastscripts
-  firefox
-  gyazo
+  evernote
+  #fastscripts
+  #firefox
+  gimp
+  #google-backup-and-sync # already installed by IT
+  gpg-suite
+  #gyazo # instant screenshots
   hex-fiend
-  iterm2
+  #iterm2
+  xquartz # must be before inkscape
+  inkscape
   karabiner-elements
-  macvim
-  messenger-for-desktop
-  midi-monitor
-  moom
+  launchcontrol
+  macdown
+  #messenger-for-desktop
+  #midi-monitor
+  #moom # window manager
   omnidisksweeper
-  race-for-the-galaxy
-  reaper
-  robo-3t
-  screenhero
-  scroll-reverser
-  skype
+  pycharm
+  quip
+  #reaper #digital audio workstation
+  reflector
+  #robo-3t #mogodb gui
+  #screenhero
+  #scroll-reverser
   slack
+  slate
+  sonos
   sourcetree
   spotify
-  steam
   the-unarchiver
-  totalfinder
-  tower
-  vagrant
-  virtualbox
+  #totalfinder
+  #tower
+  #vagrant
+  #virtualbox
   vlc
-  ynab
+  wireshark
+  #ynab
+  
   # Quick Look plugins
-  betterzipql
+  # betterzipql
   qlcolorcode
   qlmarkdown
   qlprettypatch
@@ -68,13 +86,10 @@ casks=(
   quicklook-json
   quicknfo
   suspicious-package
-  webpquicklook
+  # webpquicklook
   # Color pickers
   colorpicker-developer
   colorpicker-skalacolor
-  # Drivers
-  sonos
-  xbox360-controller-driver
   # Fonts
   font-m-plus
   font-mplus-nerd-font
@@ -88,7 +103,6 @@ if (( ${#casks[@]} > 0 )); then
   for cask in "${casks[@]}"; do
     brew cask install $cask
   done
-  brew cask cleanup
 fi
 
 # Work around colorPicker symlink issue.

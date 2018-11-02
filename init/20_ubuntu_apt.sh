@@ -80,13 +80,6 @@ apt_packages+=(ansible)
 add_ppa ppa:jonathonf/vim
 apt_packages+=(vim)
 
-# https://launchpad.net/~hnakamur/+archive/ubuntu/tmux
-add_ppa ppa:hnakamur/tmux
-
-# https://github.com/greymd/tmux-xpanes
-add_ppa ppa:greymd/tmux-xpanes
-apt_packages+=(tmux-xpanes)
-
 if is_ubuntu_desktop; then
   # http://www.omgubuntu.co.uk/2016/06/install-latest-arc-gtk-theme-ubuntu-16-04
   # apt_keys+=(http://download.opensuse.org/repositories/home:Horst3180/xUbuntu_16.04/Release.key)
@@ -251,14 +244,6 @@ if is_ubuntu_desktop; then
 fi
 
 function other_stuff() {
-  # Install Git Extras
-  if [[ ! "$(type -P git-extras)" ]]; then
-    e_header "Installing Git Extras"
-    (
-      cd $DOTFILES/vendor/git-extras &&
-      sudo make install
-    )
-  fi
   # Install misc bins from zip file.
   install_from_zip ngrok 'https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip'
   install_from_zip terraform 'https://releases.hashicorp.com/terraform/0.9.2/terraform_0.9.2_linux_amd64.zip'

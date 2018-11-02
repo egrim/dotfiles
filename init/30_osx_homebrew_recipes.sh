@@ -6,31 +6,35 @@ is_osx || return 1
 
 # Homebrew recipes
 recipes=(
-  ansible
+  autojump
   awscli
   bash
-  cmatrix
+  bash-completion
   coreutils
   cowsay
+  gibo
   git
   git-extras
-  htop-osx
+  htop
   hub
-  id3tool
-  jq
   lesspipe
   man2html
-  mercurial
+  mogenerator
+  nave
   nmap
   postgresql
-  reattach-to-user-namespace
-  sl
+  python
+  python@2
+  rbenv
+  rbenv-vars
+  rbenv-default-gems
+  rbenv-whatis
+  rbenv-use
+  ruby-build
   ssh-copy-id
   terminal-notifier
   the_silver_searcher
   thefuck
-  tmux
-  tmux-xpanes
   tree
   wget
 )
