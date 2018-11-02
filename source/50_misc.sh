@@ -5,25 +5,7 @@ shopt -s nocaseglob
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
-# Autocorrect typos in path names when using `cd`
-shopt -s cdspell
-
-# Enable some Bash 4 features when possible:
-# * `autocd`, e.g. `**/qux` will enter `./foo/bar/baz/qux`
-# * Recursive globbing, e.g. `echo **/*.txt`
-for option in autocd globstar; do
-    shopt -s "$option" 2> /dev/null
-done
-
-# Always enable colored 'grep' output
-export GREP_OPTIONS='--color=auto'
-
-# Prefer US English and use UTF-8
-export LANG="en_US"
-export LC_ALL="en_US.UTF-8"
-
-# Highlight section titles in manual pages
-export LESS_TERMCAP_md="$ORANGE"
+alias grep='grep --color=auto'
 
 # Prevent less from clearing the screen while still showing colors.
 export LESS=-XR
@@ -35,5 +17,38 @@ function titlebar() {
 
 # SSH auto-completion based on entries in known_hosts.
 if [[ -e ~/.ssh/known_hosts ]]; then
-  complete -o default -W "$(cat ~/.ssh/known_hosts | sed 's/[, ].*//' | sort | uniq | grep -v '[0-9]')" ssh scp stfp
+  complete -o default -W "$(cat ~/.ssh/known_hosts | sed 's/[, ].*//' | sort | uniq | grep -v '[0-9]')" ssh scp sftp
 fi
+
+# Disable ansible cows }:]
+export ANSIBLE_NOCOWS=1
+
+# "fuck"
+if [[ "$(which thefuck)" ]]; then
+  eval $(thefuck --alias)
+fi
+
+# Run a command repeatedly in a loop, with a delay (defaults to 1 sec).
+# Usage:
+#   loop [delay] single_command [args]
+#   loopc [delay] 'command1 [args]; command2 [args]; ...'
+# Note, these do the same thing:
+#   loop 5 bash -c 'echo foo; echo bar;
+#   loopc 5 'echo foo; echo bar'
+function loopc() { loop "$@"; }
+function loop() {
+  local caller=$(caller 0 | awk '{print $2}')
+  local delay=1
+  if [[ $1 =~ ^[0-9]*(\.[0-9]+)?$ ]]; then
+    delay=$1
+    shift
+  fi
+  while true; do
+    if [[ "$caller" == "loopc" ]]; then
+      bash -c "$@"
+    else
+      "$@"
+    fi
+    sleep $delay
+  done
+}
