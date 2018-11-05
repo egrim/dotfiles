@@ -110,3 +110,8 @@ set viewdir=$HOME/.vim/views/
 silent execute '!mkdir -p $HOME/.vim/backup'
 silent execute '!mkdir -p $HOME/.vim/swap'
 silent execute '!mkdir -p $HOME/.vim/views'
+
+" http://www.markcampbell.me/2016/04/12/setting-up-yank-to-clipboard-on-a-mac-with-vim.html
+if has ("clipboard")
+    set clipboard=unnamed " copy to the system clipboard
+endif

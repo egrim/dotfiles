@@ -36,6 +36,7 @@ recipes=(
   the_silver_searcher
   thefuck
   tree
+  vim
   wget
 )
 
