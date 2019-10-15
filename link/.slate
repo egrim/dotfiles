@@ -34,6 +34,12 @@ alias bottom          corner bottom-left resize:screenSizeX;screenSizeY/2
 alias bottomless      corner bottom-left resize:screenSizeX;screenSizeY*.4
 alias bottommore      corner bottom-left resize:screenSizeX;screenSizeY*.6
 
+alias topleft       corner top-left resize:screenSizeX/2;screenSizeY/2
+alias topright      corner top-right resize:screenSizeX/2;screenSizeY/2
+alias bottomleft    corner bottom-left resize:screenSizeX/2;screenSizeY/2
+alias bottomright   corner bottom-right resize:screenSizeX/2;screenSizeY/2
+
+
 # ======================================
 # The HYPER key
 # See: http://www.tenshu.net/2012/11/using-caps-lock-as-new-modifier-key-in.html
@@ -51,6 +57,10 @@ bind left:${hyper} chain ${left} | ${leftmore} | ${leftless}
 bind right:${hyper} chain ${right} | ${rightmore} | ${rightless}
 bind up:${hyper} chain ${top} | ${topmore} | ${topless}
 bind down:${hyper} chain ${bottom} | ${bottommore} | ${bottomless}
+bind 1:${hyper} ${topleft}
+bind 2:${hyper} ${topright}
+bind 3:${hyper} ${bottomleft}
+bind 4:${hyper} ${bottomright}
 
 # Move bindings
 bind w:${hyper} nudge +0 -5%
