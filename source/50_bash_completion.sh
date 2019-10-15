@@ -1,1 +1,1 @@
-COMPLETION=`brew --prefix 2>/dev/null`/etc/bash_completion && [[ -f $COMPLETION ]] && . $COMPLETION
+[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
